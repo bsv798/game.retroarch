@@ -212,7 +212,7 @@ RUN cd /buildkit/RetroArch \
         --disable-rpiled \
         --disable-discord \
         --disable-cdrom \
-        --disable-cheevos \
+        --enable-lua \
         --disable-accessibility \
         --disable-nvda \
         --disable-tinyalsa \
