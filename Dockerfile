@@ -139,35 +139,6 @@ RUN mkdir -p /buildkit/mesa/build-vulkan \
  && ninja -C build-vulkan/ install
 
 
-RUN cd /buildkit/RetroArch \
- && export CFLAGS="-DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11" \
- && export CXXFLAGS="-DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11" \
- && ./configure \
-        --disable-x11 \
-        --disable-ibxm \
-        --disable-winrawinput \
-        --enable-udev \
-        --disable-rpiled \
-        --disable-discord \
-        --disable-cdrom \
-        --disable-cheevos \
-        --disable-accessibility \
-        --disable-nvda \
-        --disable-tinyalsa \
-        --enable-alsa \
-        --enable-egl \
-        --enable-kms \
-        --disable-opengl \
-        --disable-opengl1 \
-        --enable-opengl_core \
-        --enable-opengles \
-        --enable-opengles3 \
-        --enable-opengles3_1 \
-        --enable-opengles3_2 \
-        --enable-vulkan \
- && make install
-
-
 RUN mkdir -p /buildkit/kodi-build \
  && cd /buildkit/kodi-build \
  && cmake \
@@ -228,6 +199,35 @@ RUN mkdir -p /buildkit/kodi-build \
   -DENABLE_XKBCOMMON=on \
   -DENABLE_XSLT=off \
 && make install
+
+
+RUN cd /buildkit/RetroArch \
+ && export CFLAGS="-DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11" \
+ && export CXXFLAGS="-DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11" \
+ && ./configure \
+        --disable-x11 \
+        --disable-ibxm \
+        --disable-winrawinput \
+        --enable-udev \
+        --disable-rpiled \
+        --disable-discord \
+        --disable-cdrom \
+        --disable-cheevos \
+        --disable-accessibility \
+        --disable-nvda \
+        --disable-tinyalsa \
+        --enable-alsa \
+        --enable-egl \
+        --enable-kms \
+        --disable-opengl \
+        --disable-opengl1 \
+        --enable-opengl_core \
+        --enable-opengles \
+        --enable-opengles3 \
+        --enable-opengles3_1 \
+        --enable-opengles3_2 \
+        --enable-vulkan \
+ && make install
 
 
 COPY . /buildkit/
